@@ -1,50 +1,37 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+﻿# 小宝项目章程
 
-## Core Principles
+## 核心原则
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### 一、结构完整
+静态页面必须包含统一的页眉、导航、主体内容区与页脚，遵循官方模板提供的 DOM 层级，不得新增破坏布局的自定义容器。
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### 二、内容可信
+展示内容需经产品与合规双重确认，发布前完成事实核验与文案校对，保持术语、语气与品牌调性一致。
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### 三、性能优先
+首屏核心信息应在首个往返内渲染完成，静态资源必须压缩合并并启用缓存策略，图片优先采用 WebP 与延迟加载。
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### 四、可访问性
+页面结构使用语义化标签，必要处补充 aria 属性与标签关联；所有交互需支持键盘操作，色彩对比度达到 WCAG 2.1 AA 基线。
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### 五、可维护性
+样式与脚本来源于共享组件库，禁止在页面内定义重复规则；每次修改需更新变更记录并提供回滚说明，确保版本可追溯。
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## 最低页面要素
+- 统一的 `<header>`，包含品牌标识、站点标题与主导航。
+- 明确的 `<main>` 区域，首屏展示核心价值主张与主要行动按钮。
+- 信息层级采用 `<section>`、`<article>`、`<aside>` 等语义标签组织。
+- `<footer>` 提供版权信息、联系方式、备案号及隐私政策链接。
+- 404、隐私政策与联系我们等必备静态页面须按模板完成并自测通过。
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## 研发流程
+- 使用设计稿与模板对照審查，确认结构与组件一致。
+- 编写或更新页面时同步更新样式变量、国际化文案与资源引用。
+- 自测包含可访问性检查、性能基准测试与移动端适配。
+- 提交合并请求前需附截图、测试记录以及差异摘要，并指派至少一名前端与一名产品复核。
+- 上线后 24 小时内监控错误日志与性能指标，必要时回滚。
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## 治理
+章程条款优先于其他实践指南，任何新增页面、模板或组件必须证明符合本章程。修订需由产品、设计、开发三方共识，并附详细迁移与培训计划；执行团队负责记录审查结果并在项目维基公开。
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
-
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
-
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-03 | **Last Amended**: 2025-12-03

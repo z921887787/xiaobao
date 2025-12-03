@@ -1,0 +1,12 @@
+﻿# 依赖工具与临时资源
+/tools/
+*.zip
+
+# 操作系统/编辑器文件
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# node/其他依赖
+node_modules/
