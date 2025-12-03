@@ -43,13 +43,12 @@
    - 更新文案时谨慎校对，保持语气与隐私要求一致。
 
 ## GitHub Pages 部署
-1. 打开 GitHub 仓库 **Settings → Pages**。
-2. 在 **Build and deployment** 中选择：
-   - **Source**：`Deploy from a branch`
-   - **Branch**：`main`
-   - **Folder**：`/blog`
-3. 保存设置后等待 GitHub Pages 构建完成，页面会在数分钟内于 `https://z921887787.github.io/xiaobao/` （或你的 GitHub 用户名对应的域名）上线。
-4. 如需自定义域名，可在同一页面配置 `Custom domain` 并按提示添加 DNS 记录。
+仓库已经内置自动发布工作流：
+
+1. 首次进入 GitHub 仓库 **Settings → Pages**，在 **Build and deployment** 里选择 **Source → GitHub Actions**（若已默认选择可跳过）。
+2. 每次向 `main` 分支推送后，`.github/workflows/deploy-pages.yml` 会自动将 `blog/` 目录打包并发布到 GitHub Pages。
+3. 首次执行工作流完成后，访问 `https://z921887787.github.io/xiaobao/` 即可浏览站点。
+4. 如需自定义域名，可在 **Custom domain** 中填写你的域名并按提示配置 DNS，同时记得在仓库根目录添加 `CNAME` 文件。
 
 ## 安全与隐私提示
 - 本仓库内的图片与视频仅为占位文件，请务必用真实素材替换并妥善保密。
