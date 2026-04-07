@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足迹地球 - 小宝的成长日记</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/globe.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/",
+      "topojson-client": "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/images/logo.svg" alt="小宝专属徽章" class="brand-logo">
+      <div>
+        <h1>小宝的成长日记</h1>
+        <p>足迹地球 · 探索小宝去过的每个角落</p>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="memories.html">成长瞬间</a>
+      <a href="gallery.html">照片墙</a>
+      <a href="videos.html">影像集</a>
+      <a href="magic.html">魔法互动</a>
+      <a href="globe.html" aria-current="page">足迹地球</a>
+      <a href="#footer">联系我们</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <h2>足迹地球</h2>
+      <p>旋转地球，点击标记，探索小宝的足迹故事</p>
+    </section>
+
+    <section class="globe-container" id="globe-container" aria-label="3D交互地球">
+      <canvas id="globe-canvas"></canvas>
+
+      <div id="globe-loading" class="globe-loading">
+        <div class="globe-spinner"></div>
+        <p>正在加载地球...</p>
+      </div>
+
+      <div class="globe-controls">
+        <button id="btn-zoom-in" class="globe-btn" aria-label="放大" title="放大">+</button>
+        <button id="btn-zoom-out" class="globe-btn" aria-label="缩小" title="缩小">&minus;</button>
+        <button id="btn-auto-rotate" class="globe-btn" aria-label="自动旋转" title="自动旋转">&#x21bb;</button>
+      </div>
+    </section>
+
+    <div id="marker-popup" class="marker-popup" role="dialog" aria-hidden="true" aria-label="地点详情">
+      <div class="marker-popup__card">
+        <button id="popup-close" class="marker-popup__close" aria-label="关闭">&times;</button>
+        <div id="popup-image" class="marker-popup__image"></div>
+        <h3 id="popup-title" class="marker-popup__title"></h3>
+        <time id="popup-date" class="marker-popup__date"></time>
+        <p id="popup-desc" class="marker-popup__desc"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="site-footer">
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">联系与感谢</h2>
+      <p>想对小宝说几句祝福？请写信至 <a href="mailto:love@xiaobao.family">love@xiaobao.family</a>。</p>
+    </section>
+    <small>© 2025 小宝成长记录 | 粤ICP备00000000号-1 | <a href="privacy.html">隐私政策</a></small>
+  </footer>
+
+  <script type="module" src="assets/scripts/globe/main.js"></script>
+</body>
+</html>

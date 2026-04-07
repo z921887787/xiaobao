@@ -1,0 +1,227 @@
+.globe-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow: 0 20px 45px rgba(255, 152, 179, 0.18);
+  backdrop-filter: blur(8px);
+  touch-action: none;
+}
+
+#globe-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#globe-canvas:active {
+  cursor: grabbing;
+}
+
+/* Loading */
+.globe-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel);
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.globe-loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.globe-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--divider);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: globe-spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes globe-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Controls */
+.globe-controls {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.globe-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 152, 179, 0.2);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.globe-btn:hover,
+.globe-btn:focus-visible {
+  background: var(--accent);
+  color: #fff;
+}
+
+.globe-btn--active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Marker Popup */
+.marker-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 59, 59, 0.3);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.marker-popup.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.marker-popup__card {
+  position: relative;
+  max-width: 380px;
+  width: 90%;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 2rem;
+  box-shadow: 0 24px 48px rgba(255, 152, 179, 0.25);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.marker-popup.visible .marker-popup__card {
+  transform: translateY(0);
+}
+
+.marker-popup__close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.marker-popup__close:hover,
+.marker-popup__close:focus-visible {
+  background: var(--accent);
+  color: #fff;
+}
+
+.marker-popup__image {
+  width: 100%;
+  height: 160px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: var(--accent-soft);
+  display: none;
+}
+
+.marker-popup__image.has-image {
+  display: block;
+}
+
+.marker-popup__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.marker-popup__title {
+  margin: 0 0 0.3rem;
+  color: var(--accent-dark);
+  font-size: 1.3rem;
+}
+
+.marker-popup__date {
+  display: block;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.marker-popup__desc {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Mobile: bottom drawer */
+@media (max-width: 600px) {
+  .globe-container {
+    border-radius: 18px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .marker-popup {
+    align-items: flex-end;
+  }
+
+  .marker-popup__card {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 22px 22px 0 0;
+    padding-bottom: 2.5rem;
+    transform: translateY(100%);
+  }
+
+  .marker-popup.visible .marker-popup__card {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe-spinner {
+    animation: none;
+  }
+}
